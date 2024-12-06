@@ -1,0 +1,235 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>个人博客搭建 | JZYG</title><meta name="author" content="姜子鱼竿"><meta name="copyright" content="姜子鱼竿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基于hexo+github的个人博客搭建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="个人博客搭建">
+<meta property="og:url" content="https://jzyg.xyz/archives/5f53.html">
+<meta property="og:site_name" content="JZYG">
+<meta property="og:description" content="基于hexo+github的个人博客搭建">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jzyg.xyz/img/butterfly-icon.png">
+<meta property="article:published_time" content="2024-12-03T13:56:22.736Z">
+<meta property="article:modified_time" content="2024-12-05T07:20:03.875Z">
+<meta property="article:author" content="姜子鱼竿">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jzyg.xyz/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://jzyg.xyz/archives/5f53.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+          
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":50,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '个人博客搭建',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><link rel="stylesheet" href="/css/style.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">JZYG</span></a><a class="nav-page-title" href="/"><span class="site-name">个人博客搭建</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">个人博客搭建</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-03T13:56:22.736Z" title="发表于 2024-12-03 21:56:22">2024-12-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-05T07:20:03.875Z" title="更新于 2024-12-05 15:20:03">2024-12-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="基于hexo-github"><a href="#基于hexo-github" class="headerlink" title="基于hexo+github"></a>基于hexo+github</h1><p>必备配置</p>
+<ol>
+<li>node.js的安装和环境变量的配置</li>
+<li>git安装，不需要配置环境变量</li>
+<li>github用户注册</li>
+<li>本地部署</li>
+<li>上线github</li>
+</ol>
+<h2 id="node-js的安装和环境变量的配置"><a href="#node-js的安装和环境变量的配置" class="headerlink" title="node.js的安装和环境变量的配置"></a>node.js的安装和环境变量的配置</h2><ul>
+<li>node.js的安装和环境变量的配置：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/WHF__/article/details/129362462">https://blog.csdn.net/WHF__/article/details/129362462</a></li>
+</ul>
+<h2 id="git的安装"><a href="#git的安装" class="headerlink" title="git的安装"></a>git的安装</h2><ul>
+<li>git的下载地址：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></li>
+</ul>
+<p><img src="/../img_blog/a.png" alt="image-20241203182250437"></p>
+<p><img src="/../img_blog/b.png" alt="379a5069be0493b16e3915ada09dfc7"></p>
+<h2 id="注册github账号"><a href="#注册github账号" class="headerlink" title="注册github账号"></a>注册github账号</h2><ol>
+<li>注册好之后点击</li>
+</ol>
+<p><img src="/../img_blog/c.png" alt="c"></p>
+<p><img src="/../img_blog/d.png" alt="ad70b47c3d9e3e941b1be98e33e7310"></p>
+<p><img src="/../img_blog/e.png" alt="c"></p>
+<ol start="2">
+<li>这是我已经创建过的仓库，就出现红色提示，不用管，按照名字.github.io创建</li>
+</ol>
+<p><img src="/../img_blog/f.png" alt="9a982e488dbacd59dd6f06c36e80ec1"></p>
+<h2 id="本地部署"><a href="#本地部署" class="headerlink" title="本地部署"></a>本地部署</h2><ol>
+<li>如果你的node.js是装在D盘或者E盘的Program Files文件中，那可要注意了，首先需要管理员身份打开终端，下载hexo</li>
+</ol>
+<p><img src="/../img_blog/g.png" alt="image-20241203212132408"></p>
+<p>执行<code>npm install hexo-cli -g</code></p>
+<p><img src="/../img_blog/i.png" alt="image-20241203212951629"></p>
+<ol start="2">
+<li>创建文件夹用来放个人博客的文件：css、html等等文件，现在我创建一个文件夹在D:&#x2F;BlogFIle</li>
+</ol>
+<p><img src="/../img_blog/h.png" alt="image-20241203212557221"></p>
+<ol start="3">
+<li><p>让控制台文件目录切换到D:&#x2F;BlogFIle，在控制台执行<code>cd /d d:/BlogFile</code></p>
+</li>
+<li><p>控制台执行：<code>hexo init myblog</code>表示初始化hexo在myblog文件夹中，我劝大家还是把myblog带上，我当时不带出问题了，随你们</p>
+</li>
+<li><p>控制台执行：<code>cd ./myblog</code> </p>
+</li>
+<li><p>控制台执行：<code>npm install</code> </p>
+</li>
+<li><p>修改_config.yml文件</p>
+</li>
+</ol>
+<p><img src="/../img_blog/j.png"></p>
+<ul>
+<li><p>ctrl+f查找deloy，修改配置</p>
+</li>
+<li><p><img src="/../img_blog/k.png" alt="image-20241203215134935"></p>
+</li>
+<li><p>ctrl+f查找</p>
+</li>
+<li><p><img src="/../img_blog/l.png" alt="26514704dde09721304cc1f8d7ba7ff"></p>
+</li>
+</ul>
+<ol start="6">
+<li><p>控制台执行：<code>hexo g</code>构建hexo</p>
+</li>
+<li><p>控制台执行：<code>hexo s</code> 本地部署，会出现默认的端口<a href="https://localhost:4000，可以查看本地部署是否成功" rel="external nofollow noreferrer">https://localhost:4000，可以查看本地部署是否成功</a></p>
+</li>
+<li><p>控制台执行：ctrl+c退出本地部署</p>
+</li>
+<li><p>如果本地部署成功，执行<code>hexo d</code>上传到github，就可以网上看了</p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://jzyg.xyz">姜子鱼竿</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://jzyg.xyz/archives/5f53.html">https://jzyg.xyz/archives/5f53.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://jzyg.xyz" target="_blank">JZYG</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/archives/8579.html" title="博客备份"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">博客备份</div></div><div class="info-2"><div class="info-item-1">基于github个人博客备份</div></div></div></a><a class="pagination-related" href="/archives/3eeb.html" title="Hello World"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Hello World</div></div><div class="info-2"><div class="info-item-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">姜子鱼竿</div><div class="author-info-description">化繁为简</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/xxxxx" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github" style="color: #hdhfbb;"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #000000;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8Ehexo-github"><span class="toc-number">1.</span> <span class="toc-text">基于hexo+github</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#node-js%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.</span> <span class="toc-text">node.js的安装和环境变量的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">git的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8Cgithub%E8%B4%A6%E5%8F%B7"><span class="toc-number">1.3.</span> <span class="toc-text">注册github账号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2"><span class="toc-number">1.4.</span> <span class="toc-text">本地部署</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/archives/55f1.html" title="个人图床搭建">个人图床搭建</a><time datetime="2024-12-04T15:02:32.354Z" title="发表于 2024-12-04 23:02:32">2024-12-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/archives/8579.html" title="博客备份">博客备份</a><time datetime="2024-12-04T12:12:17.708Z" title="发表于 2024-12-04 20:12:17">2024-12-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/archives/5f53.html" title="个人博客搭建">个人博客搭建</a><time datetime="2024-12-03T13:56:22.736Z" title="发表于 2024-12-03 21:56:22">2024-12-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/archives/3eeb.html" title="Hello World">Hello World</a><time datetime="2024-12-02T14:56:12.067Z" title="发表于 2024-12-02 22:56:12">2024-12-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By 姜子鱼竿</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><div> <a onclick="window.open('https://www.baidu.com')">备案信息</a> </div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
